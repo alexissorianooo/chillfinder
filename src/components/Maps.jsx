@@ -1,29 +1,31 @@
 import React from 'react'
-import { useState, useEffect, useRef } from "react";
-import "@tomtom-international/web-sdk-maps/dist/maps.css";
-import * as tt from "@tomtom-international/web-sdk-maps";
+import { GoogleMap, LoadScript } from '@react-google-maps/api';
 
-export const Maps = (props) => {
-  const mapElement = useRef(null);
-  const [mapLongitude, setMapLongitude] = useState(props.longitude);
-  const [mapLatitude, setMapLatitude] = useState(props.latitude);
-  const [mapZoom, setMapZoom] = useState(17);
-  const [map, setMap] = useState({});
+const containerStyle = {
+  width: '100%',
+  height: '100%'
+};
 
-  useEffect(() => {
-    let map = tt.map({
-      key: process.env.REACT_APP_API_KEY,
-      container: mapElement.current,
-      center: [mapLongitude, mapLatitude],
-      zoom: mapZoom
-    });
-    setMap(map);
-    return () => map.remove();
-  }, []);
+const center = {
+  lat: 14.544659452978376,
+  lng: 121.07991567922895
+};
 
+function MyComponent() {
   return (
-    <>
-      <div ref={mapElement} className="h-full w-full" />
-    </>
-  );
+    <LoadScript
+      googleMapsApiKey={process.env.REACT_APP_API_KEY}
+    >
+      <GoogleMap
+        mapContainerStyle={containerStyle}
+        center={center}
+        zoom={18}
+      >
+        { /* Child components, such as markers, info windows, etc. */ }
+        <></>
+      </GoogleMap>
+    </LoadScript>
+  )
 }
+
+export default React.memo(MyComponent)

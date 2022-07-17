@@ -9,3 +9,7 @@ root.render(
     <App />
   </React.StrictMode>
 );
+
+// laboratory
+// import store from "./app/store";
+// import axios from "axios";

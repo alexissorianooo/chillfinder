@@ -1,5 +1,5 @@
 import React from 'react'
-import {Maps} from './components/Maps';
+import Maps from './components/Maps';
 import {Search} from './components/Search.jsx'
 import store from './app/store';
 
