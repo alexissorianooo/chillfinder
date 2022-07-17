@@ -7,3 +7,18 @@
         @apply rounded-md w-96 h-12
     }
 }
+
+.pac-item {
+    padding: 12px 0px;
+    height: 48px;
+}
+
+.pac-item-query{
+    font-size: 1rem;
+    line-height: 1.5rem;
+}
+/* 
+.pac-matched{
+    padding: 12px 0px;
+    background-color: azure;
+} */

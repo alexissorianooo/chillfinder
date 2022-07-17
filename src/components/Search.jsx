@@ -17,6 +17,7 @@ export const Search = () => {
                         dispatch(search_long(searched.current.getPlace().geometry.location.lng()))
                         // console.log(searched.current.getPlace().geometry.location.lat())
                     }}
+                    restrictions={{country: 'ph'}}
                 >
                     <input 
                         className='search pl-5 text-2xl'
