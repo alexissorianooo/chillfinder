@@ -8,7 +8,7 @@ const initialState = {
 }
 
 export const fetchResults = createAsyncThunk('results/fetchResults', () =>{
-
+    //TODO: nearby places API
     var config = {
         url: `https://maps.googleapis.com/maps/api/place/nearbysearch/json?keyword=capco&location=14.544880959735004%2C121.07990173989005&radius=10000&type=coffee&key=${process.env.REACT_APP_API_KEY}`,
         headers: {
