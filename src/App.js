@@ -7,6 +7,7 @@ import { useLoadScript } from '@react-google-maps/api';
 function App() {
   const longitude = useSelector(state => state.search.longitude)
   const latitude = useSelector(state => state.search.latitude)
+  const zoom = useSelector(state => state.search.zoom)
 
   const [libraries] = useState(['places']);
 
@@ -24,7 +25,7 @@ function App() {
             <Search longitude = {longitude} latitude = {latitude}/> 
           </div>
           <div className='w-9/12 z-[1]'>
-            <Maps longitude = {longitude} latitude = {latitude}/>
+            <Maps longitude = {longitude} latitude = {latitude} zoom={zoom}/>
           </div>
         </> : <h1>Loading...</h1>}
       </div>

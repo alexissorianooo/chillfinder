@@ -1,8 +1,9 @@
 import React from 'react'
 import { GoogleMap, Marker } from '@react-google-maps/api';
+import { useSelector } from 'react-redux';
 
 function Maps(props) {
-
+  const search_active = useSelector(state => state.search.active)
   const center = {
     lat: props.latitude,
     lng: props.longitude
@@ -13,11 +14,12 @@ function Maps(props) {
       <GoogleMap
         mapContainerClassName='w-full h-full'
         center={center}
-        zoom={18}
+        zoom={props.zoom}
       >
         <Marker
           position={center}
           animation={1}
+          visible={search_active}
         />
       </GoogleMap>
     </>

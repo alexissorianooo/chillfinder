@@ -1,8 +1,10 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
-    longitude: 121.07991567922895,
-    latitude: 14.544659452978376
+    longitude: 121.7740,
+    latitude: 12.8797,
+    zoom: 6,
+    active: false
 }
 const searchSlice = createSlice({
     name: 'search',
@@ -13,9 +15,15 @@ const searchSlice = createSlice({
         },
         search_lat: (state, action) =>{
             state.latitude = action.payload
+        },
+        search_zoom: (state, action) =>{
+            state.zoom = action.payload
+        },
+        search_active: (state) => {
+            state.active = true
         }
     }
 })
 
 export default searchSlice.reducer
-export const { search_long, search_lat } = searchSlice.actions
+export const { search_long, search_lat, search_zoom, search_active } = searchSlice.actions
