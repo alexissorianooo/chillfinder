@@ -3,44 +3,82 @@ import axios from 'axios'
 
 const initialState = {
     loading: false,
-    places: [],
+    places: [
+        {
+            "location":{
+                "lat":49.277010000000075,
+                "lng":-123.04406999999998,
+            },
+            "name":"Cafca Tacos & Tea",
+            "address":"826 Renfrew St, Vancouver, British Columbia, V5K",
+            "phone":"(604) 563-8523",
+            "distanceMeter":420.9054044964641
+        },
+        {
+            "location":{
+                "lat":49.277010000000075,
+                "lng":-123.04406999999998,
+            },
+            "name":"Cafca Tacos & Tea",
+            "address":"826 Renfrew St, Vancouver, British Columbia, V5K",
+            "phone":"(604) 563-8523",
+            "distanceMeter":420.9054044964641
+        },
+        {
+            "location":{
+                "lat":49.277010000000075,
+                "lng":-123.04406999999998,
+            },
+            "name":"Cafca Tacos & Tea",
+            "address":"826 Renfrew St, Vancouver, British Columbia, V5K",
+            "phone":"(604) 563-8523",
+            "distanceMeter":420.9054044964641
+        },
+        {
+            "location":{
+                "lat":49.277010000000075,
+                "lng":-123.04406999999998,
+            },
+            "name":"Cafca Tacos & Tea",
+            "address":"826 Renfrew St, Vancouver, British Columbia, V5K",
+            "phone":"(604) 563-8523",
+            "distanceMeter":420.9054044964641
+        },
+        {
+            "location":{
+                "lat":49.277010000000075,
+                "lng":-123.04406999999998,
+            },
+            "name":"Cafca Tacos & Tea",
+            "address":"826 Renfrew St, Vancouver, British Columbia, V5K",
+            "phone":"(604) 563-8523",
+            "distanceMeter":420.9054044964641
+        },
+    ],
     error: ''
 }
 
-export const fetchResults = createAsyncThunk('results/fetchResults', () =>{
+export const fetchResults = createAsyncThunk('results/fetchResults', ({lat,lng,name}) =>{
     //TODO: nearby places API
-    var config = {
-        url: `https://maps.googleapis.com/maps/api/place/nearbysearch/json?keyword=capco&location=14.544880959735004%2C121.07990173989005&radius=10000&type=coffee&key=${process.env.REACT_APP_API_KEY}`,
+
+    const options = {
+        method: 'GET',
+        url: 'https://nearby-places.p.rapidapi.com/v2/nearby',
+        params: {lat: lat, lng: lng, type: 'coffee shop', radius: '10000'},
         headers: {
-            "Access-Control-Allow-Origin": 'http://localhost:3000',
-            "Content-Type": "application/json",
-            // "Access-Control-Allow-Headers": 'Content-Type, Origin, X-requested-with',
-            // 'Access-Control-Allow-Credentials': true,
-            // 'Access-Control-Max-Age': 86400,
-            // 'Access-Control-Allow-Methods': 'GET, OPTIONS',
-            // 'Access-Control-Expose-Headers': '*'
-
-        },
+          'X-RapidAPI-Key': process.env.REACT_APP_NEARBY_KEY,
+          'X-RapidAPI-Host': 'nearby-places.p.rapidapi.com'
+        }
       };
+      
+      axios.request(options).then(function (response) {
+          console.log(response.data);
+      }).catch(function (error) {
+          console.error(error);
+      });
 
-    return axios(config).then((res) => console.log(res.data)).catch(err => console.log(err))
-    // return axios.get(config.url,{headers: {"Access-Control-Allow-Origin": '*'}}).then(res => console.log(res.data))
-
-    // return axios.get(`https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=14.544880959735004%2C121.07990173989005&radius=10000&type=coffee&keyword=capco&key=${process.env.REACT_APP_API_KEY}`, { 
-    //     headers: {
-    //         'Access-Control-Allow-Origin': '*',
-    //         'Content-Type': 'application/json',
-    //      }
-    // }).then(res => console.log(JSON.stringify(res.data))) 
-    //,{headers:{"Access-Control-Allow-Origin": '*', 'Access-Control-Allow-Credentials': 'false'}} 
-    // , {withCredentials: true, headers:{"Access-Control-Allow-Origin": '*', 'Access-Control-Allow-Methods': "GET, OPTIONS, POST, PUT"}}
 })
 
-
-// export const fetchResults = createAsyncThunk('results/fetchResults', () =>{
-//     return axios.get(`https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=14.544880959735004%2C121.07990173989005&radius=10000&type=coffee&keyword=capco&key=${process.env.REACT_APP_API_KEY}`, {crossorigin: true, headers: {'Access-Control-Allow-Origin': '*'}})
-//                 .then(res => console.log(res.header("Access-Control-Allow-Origin", "*")))
-// })
 
 const resultsSlice = createSlice({
     name: 'results',

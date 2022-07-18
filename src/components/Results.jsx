@@ -1,9 +1,10 @@
 import React from 'react'
-import { useDispatch, useSelector } from 'react-redux'
+import { useSelector } from 'react-redux'
 
-function Results(){
+function Results({places}){
+    console.log(places)
     return(
-        <div>
+        <div className='bg-slate-300 h-1/3 m-3'>
             
         </div>
     )
