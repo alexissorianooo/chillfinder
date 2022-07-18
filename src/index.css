@@ -6,8 +6,12 @@
     .search{
         @apply rounded-md h-12
     }
+    .result{
+        @apply h-4/5
+    }
 }
 
+/* for search Suggestions of AutoComplete */
 .pac-item {
     padding: 12px 0px;
     height: 48px;
@@ -18,6 +22,7 @@
     line-height: 1.5rem;
 }
 
+/* for AutoComplete Component */
 .autoComplete{
     width: 83.333%;
     margin: auto;
