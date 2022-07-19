@@ -55,7 +55,9 @@ const initialState = {
             "distanceMeter":420.9054044964641
         },
     ],
-    error: ''
+    error: '',
+    longitude: 0,
+    latitude: 0
 }
 
 export const fetchResults = createAsyncThunk('results/fetchResults', ({lat,lng,name}) =>{
@@ -83,6 +85,14 @@ export const fetchResults = createAsyncThunk('results/fetchResults', ({lat,lng,n
 const resultsSlice = createSlice({
     name: 'results',
     initialState,
+    reducers:{
+        results_longitude: (state, action) => { 
+            state.longitude = action.payload
+        },
+        results_latitude: (state, action) => {
+            state.latitude = action.payload
+        }
+    },
     extraReducers: (builder) => {
         builder.addCase(fetchResults.pending, state => {
             state.loading = true
@@ -101,3 +111,4 @@ const resultsSlice = createSlice({
 })
 
 export default resultsSlice.reducer
+export const {results_latitude, results_longitude} = resultsSlice.actions

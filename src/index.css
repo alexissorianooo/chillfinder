@@ -6,9 +6,19 @@
     .search{
         @apply rounded-md h-12
     }
-    .result{
-        @apply h-4/5
+    .searchBarDiv{
+        @apply h-1/2 flex flex-col justify-center
     }
+    .categoriesDiv{ 
+        @apply h-1/2 flex flex-row justify-evenly items-center
+    }
+    .button{
+        @apply bg-red-300 w-32 h-16 m-2
+    }
+    .button-effects{
+        @apply hover:-translate-y-1 hover:shadow-md
+    }
+    /* scrollbar for search-results */
     .scrollBar{
         @apply overflow-y-auto
     }
