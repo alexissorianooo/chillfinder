@@ -87,7 +87,7 @@ export const fetchResults = createAsyncThunk('results/fetchResults', ({lat,lng,n
     url: 'https://nearby-places.p.rapidapi.com/nearby',
     params: {lat: lat, lng: lng, type: 'cafe', radius: '2000'},
     headers: {
-        'X-RapidAPI-Key': '737c351419mshcd5b2ed3d146436p1e77e1jsn084e26cdf8d9',
+        'X-RapidAPI-Key': process.env.REACT_APP_NEARBY_KEY,
         'X-RapidAPI-Host': 'nearby-places.p.rapidapi.com'
     }
     };

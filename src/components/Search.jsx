@@ -20,10 +20,12 @@ export const Search = () => {
         setRadius(value)
     }
 
+    // TODO: No bugs found yet, whenever radius input updates, it updates the redux store
     useEffect(()=> {
         dispatch(results_radius(radius))
     },[radius,dispatch])
 
+    // TODO: search and results height re-design (search height takes up too much space)
     return(
         <>
             <div className='flex flex-col h-full'>
