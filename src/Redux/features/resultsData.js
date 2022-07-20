@@ -7,6 +7,7 @@ export const places = [
             "lng":121.080161,
             },
         "address":"Dreamville, Dreamville Homes, Taguig, 1601",
+        'rating': 1.5,
         "distanceMeter":146.66,
     },
     {
@@ -141,6 +142,7 @@ export const places = [
         "lng":121.08286,
         },
     "address":"G3WM+J4X, A.B Cruz, Taguig",
+    'rating': 5,
     "distanceMeter":383.84,
     },
     {
