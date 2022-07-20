@@ -11,8 +11,7 @@ const initialState = {
     radius: 0
 }
 console.log(initialState)
-export const fetchResults = createAsyncThunk('results/fetchResults', ({lat,lng,name}) =>{
-    //TODO: radius, longitude, latitude properties at inisitalState
+export const fetchResults = createAsyncThunk('results/fetchResults', ({lat,lng,radius,type}) =>{
 
     // const options = {
     //     method: 'GET',
@@ -30,23 +29,21 @@ export const fetchResults = createAsyncThunk('results/fetchResults', ({lat,lng,n
     //       console.error(error);
     //   });
 
+    // google nearby below
+
     // const options = {
     // method: 'GET',
     // url: 'https://nearby-places.p.rapidapi.com/nearby',
-    // params: {lat: lat, lng: lng, type: 'cafe', radius: '2000'},
+    // params: {lat: lat, lng: lng, type: type, radius: radius},
     // headers: {
     //     'X-RapidAPI-Key': process.env.REACT_APP_NEARBY_KEY,
     //     'X-RapidAPI-Host': 'nearby-places.p.rapidapi.com'
     // }
     // };
 
-    // axios.request(options).then(function (response) {
-    //     console.log(response.data);
-    // }).catch(function (error) {
-    //     console.error(error);
-    // });
+    // return axios.request(options).then(res => res.data);
 
-    console.log(initialState.latitude, initialState.latitude, initialState.radius)
+    // console.log(lat,lng,radius, type)
 })
 
 

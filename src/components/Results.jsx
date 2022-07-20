@@ -1,5 +1,4 @@
 import React from 'react'
-import { useSelector } from 'react-redux'
 
 function Results({places}){
     const stars = []
@@ -12,6 +11,12 @@ function Results({places}){
             stars.push('half')
         }
     }
+    /**
+     * // TODO:
+     * results functionalities
+     * 1. onCLick -> display directions from input location to clicked location
+     * 2. display info box with pics
+     */
     return(
         <div className='bg-blue-400 min-h-1/5 m-4 rounded-3xl result-effects'>
             <div className='bg-blue-400 min-h-1/4 flex flex-row justify-between items-center pl-3 pr-5 py-2 rounded-t-3xl'>
@@ -19,7 +24,7 @@ function Results({places}){
                 {
                     places.rating ? 
                         <div className='w-1/5 text-right'>
-                            {stars.map(item => item === 'one' ? <i className="fa-solid fa-star text-yellow-300"></i> : <i class="fa-solid fa-star-half text-yellow-300"></i>)}
+                            {stars.map((item, index) => item === 'one' ? <i key={index} className="fa-solid fa-star text-yellow-300"></i> : <i key={index} className="fa-solid fa-star-half text-yellow-300"></i>)}
                         </div> 
                         : null
                 }
