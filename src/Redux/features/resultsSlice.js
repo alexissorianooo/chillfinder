@@ -1,60 +1,10 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import axios from 'axios'
+import { places } from "./resultsData";
 
 const initialState = {
     loading: false,
-    places: [
-        {
-            "name":"Kopi Of The Day",
-            "place_id":"ChIJwTPjQlHHlzMRWJx3GG0FJUc",
-            "location":{
-                "lat":14.5427672,
-                "lng":121.082007,
-            },
-            "address":"71 L.Labao, Taguig",
-            "distanceMeter":307
-        },
-        {
-            "name":"Kopi Of The Day",
-            "place_id":"ChIJwTPjQlHHlzMRWJx3GG0FJUc",
-            "location":{
-                "lat":14.5427672,
-                "lng":121.082007,
-            },
-            "address":"71 L.Labao, Taguig",
-            "distanceMeter":307
-        },
-        {
-            "name":"Kopi Of The Day",
-            "place_id":"ChIJwTPjQlHHlzMRWJx3GG0FJUc",
-            "location":{
-                "lat":14.5427672,
-                "lng":121.082007,
-            },
-            "address":"71 L.Labao, Taguig",
-            "distanceMeter":307
-        },
-        {
-            "name":"Kopi Of The Day",
-            "place_id":"ChIJwTPjQlHHlzMRWJx3GG0FJUc",
-            "location":{
-                "lat":14.5427672,
-                "lng":121.082007,
-            },
-            "address":"71 L.Labao, Taguig",
-            "distanceMeter":307
-        },
-        {
-            "name":"Kopi Of The Day",
-            "place_id":"ChIJwTPjQlHHlzMRWJx3GG0FJUc",
-            "location":{
-                "lat":14.5427672,
-                "lng":121.082007,
-            },
-            "address":"71 L.Labao, Taguig",
-            "distanceMeter":307
-        },
-    ],
+    places: places,
     error: '',
     longitude: 0,
     latitude: 0,

@@ -4,6 +4,7 @@ import { search_lat, search_long, search_zoom, search_active,search_name } from 
 import { useDispatch, useSelector } from 'react-redux'
 import { fetchResults, results_latitude, results_longitude, results_radius } from '../Redux/features/resultsSlice'
 import Results from './Results'
+import coffee from '../images/coffee.png'
 
 export const Search = () => {
     const places = useSelector(state => state.results.places)
@@ -20,16 +21,14 @@ export const Search = () => {
         setRadius(value)
     }
 
-    // TODO: No bugs found yet, whenever radius input updates, it updates the redux store
     useEffect(()=> {
         dispatch(results_radius(radius))
     },[radius,dispatch])
 
-    // TODO: search and results height re-design (search height takes up too much space)
     return(
         <>
             <div className='flex flex-col h-full'>
-                <div className='h-2/5 w-full mt-12'>
+                <div className='h-2/6 w-full mt-12'>
                     <div className='searchBarDiv'>
                         <label className='input-label'>Location
                             <Autocomplete
@@ -59,12 +58,17 @@ export const Search = () => {
                             Max: 5000
                         </label>
                     </div>
-                    <div className='categoriesDiv bg-green-200'>
-                        <div className='button button-effects'>Restaurant</div>
-                        <div className='button button-effects'>Coffee</div>
+                    <div className='categoriesDiv'>
+                        <div className='button button-effects'>
+                            <i className="button-text fa-solid fa-burger  text-[#EE851C]"></i>
+                        </div>
+                        <div className='button button-effects'>
+                            {/* <img src={coffee} alt='coffee' className='object-scale-down button button-effects'></img> */}
+                            <i className="button-text fa-solid fa-mug-hot text-[#6F4E37]"></i>
+                        </div>
                     </div>
                 </div>
-                <div className='scrollBar h-3/5 w-full'>
+                <div className='scrollBar h-4/6 w-full'>
                 {places ? places.map((item,index) => <Results key={index} places={item}/>) : null}
                 </div>
             </div>
