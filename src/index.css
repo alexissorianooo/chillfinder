@@ -13,16 +13,16 @@
         @apply w-5/6 mb-5
     }
     .categoriesDiv{ 
-        @apply h-1/2 flex flex-row justify-evenly items-center
+        @apply mt-3 flex flex-row justify-evenly items-center
     }
     .result-effects{
         @apply hover:scale-105 hover:shadow-md
     }
-    /* .button{
-        @apply bg-white rounded-3xl
-    } */
+    .button{
+        @apply  rounded-3xl
+    }
     .button-text{
-        @apply text-9xl p-2
+        @apply text-8xl p-2
     }
     /* hover:shadow-md */
     .button-effects{

@@ -58,17 +58,19 @@ export const Search = () => {
                             Max: 5000
                         </label>
                     </div>
-                    <div className='categoriesDiv'>
-                        <div className='button button-effects'>
-                            <i className="button-text fa-solid fa-burger  text-[#EE851C]"></i>
-                        </div>
-                        <div className='button button-effects'>
-                            {/* <img src={coffee} alt='coffee' className='object-scale-down button button-effects'></img> */}
-                            <i className="button-text fa-solid fa-mug-hot text-[#6F4E37]"></i>
+                    {/* TODO: categories functionalities */}
+                    <div className=' bg-slate-300 h-1/2 w-10/12 mx-auto rounded-2xl p-3 pb-0'> Categories
+                        <div className='categoriesDiv'>
+                            <div className='button button-effects'>
+                                <i className="button-text fa-solid fa-utensils text-[#e6e6e6]"></i>
+                            </div>
+                            <div className='button button-effects'>
+                                <i className="button-text fa-solid fa-mug-hot text-[#6F4E37]"></i>
+                            </div>
                         </div>
                     </div>
                 </div>
-                <div className='scrollBar h-4/6 w-full'>
+                <div className='scrollBar h-4/6 w-full mt-3'>
                 {places ? places.map((item,index) => <Results key={index} places={item}/>) : null}
                 </div>
             </div>

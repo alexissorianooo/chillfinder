@@ -30,24 +30,23 @@ export const fetchResults = createAsyncThunk('results/fetchResults', ({lat,lng,n
     //       console.error(error);
     //   });
 
-    const axios = require("axios");
+    // const options = {
+    // method: 'GET',
+    // url: 'https://nearby-places.p.rapidapi.com/nearby',
+    // params: {lat: lat, lng: lng, type: 'cafe', radius: '2000'},
+    // headers: {
+    //     'X-RapidAPI-Key': process.env.REACT_APP_NEARBY_KEY,
+    //     'X-RapidAPI-Host': 'nearby-places.p.rapidapi.com'
+    // }
+    // };
 
-    const options = {
-    method: 'GET',
-    url: 'https://nearby-places.p.rapidapi.com/nearby',
-    params: {lat: lat, lng: lng, type: 'cafe', radius: '2000'},
-    headers: {
-        'X-RapidAPI-Key': process.env.REACT_APP_NEARBY_KEY,
-        'X-RapidAPI-Host': 'nearby-places.p.rapidapi.com'
-    }
-    };
+    // axios.request(options).then(function (response) {
+    //     console.log(response.data);
+    // }).catch(function (error) {
+    //     console.error(error);
+    // });
 
-    axios.request(options).then(function (response) {
-        console.log(response.data);
-    }).catch(function (error) {
-        console.error(error);
-    });
-
+    console.log(initialState.latitude, initialState.latitude, initialState.radius)
 })
 
 
