@@ -9,7 +9,6 @@ function Maps(props) {
     lat: props.latitude,
     lng: props.longitude
   }
-
   const [directionResponse, setDirectionResponse] = useState(null)
   const [distance, setDistance] = useState(null)
   const [duration, setDuration] = useState(null)
