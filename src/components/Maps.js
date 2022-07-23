@@ -4,7 +4,6 @@ import { useSelector } from 'react-redux';
 
 function Maps(props) {
   const search_active = useSelector(state => state.search.active)
-  const search_name = useSelector(state => state.search.name)
   const search_endpoint = useSelector(state => state.search.endpoint)
   const center = {
     lat: props.latitude,
@@ -71,7 +70,7 @@ function Maps(props) {
           title='You are here'
           label='You are here...'
         />
-        {directionResponse && <DirectionsRenderer directions={directionResponse}/>}
+        {directionResponse && search_endpoint ? <DirectionsRenderer directions={directionResponse}/> : null}
       </GoogleMap>
     </>
   )

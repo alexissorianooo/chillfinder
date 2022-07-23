@@ -49,6 +49,7 @@ export const Search = () => {
                                             dispatch(search_zoom(18))
                                             dispatch(search_active(true))
                                             dispatch(search_name(searched.current.getPlace().name))
+                                            dispatch(search_endpoint(''))
                                             // dispatch(fetchResults({lat: searched.current.getPlace().geometry.location.lat(), lng: searched.current.getPlace().geometry.location.lng(), name: searched.current.getPlace().name}))
                                             dispatch(results_latitude(searched.current.getPlace().geometry.location.lat()))
                                             dispatch(results_longitude(searched.current.getPlace().geometry.location.lng()))
@@ -76,8 +77,9 @@ export const Search = () => {
                                         dispatch(search_name('Philippines'))
                                         dispatch(results_latitude(0))
                                         dispatch(results_longitude(0))
-                                        dispatch(results_radius(1000))
-                                        document.getElementsByClassName('search').value = ''
+                                        setRadius(1000)
+                                        document.getElementById('search_ID').value = ''
+                                        document.getElementById('radius_ID').value = radius
                                     }}
                                 >
                                     <ResetLocation />  

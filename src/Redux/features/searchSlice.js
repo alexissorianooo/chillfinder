@@ -22,8 +22,8 @@ const searchSlice = createSlice({
         search_zoom: (state, action) =>{
             state.zoom = action.payload
         },
-        search_active: (state) => {
-            state.active = true
+        search_active: (state, action) => {
+            state.active = action.payload
         },
         search_name: (state, action) => {
             state.name = action.payload
