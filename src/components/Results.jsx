@@ -14,7 +14,7 @@ function Results({places}){
     /**
      * // TODO:
      * results functionalities
-     * 1. onCLick -> display directions from input location to clicked location
+     * 1. onClick -> display directions from input location to clicked location
      * 2. display info box with pics
      */
     return(

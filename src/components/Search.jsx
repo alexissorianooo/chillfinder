@@ -69,7 +69,10 @@ export const Search = () => {
                     </div>
                 </div>
                 <div className='scrollBar h-4/6 w-full mt-3'>
-                {places ? places.map((item,index) => <Results key={index} places={item}/>) : null}
+                {
+                    results.loading ? <h1>Loading...</h1> :
+                    places ? places.map((item,index) => <Results key={index} places={item}/>) : null
+                }
                 </div>
             </div>
         </>

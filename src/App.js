@@ -16,6 +16,14 @@ function App() {
     libraries
   })
 
+  const Loading = () => {
+    return(
+      <div className='h-screen w-screen flex justify-center items-center'>
+        <div className="text-3xl">Loading...</div>
+      </div>
+    )
+  }
+
   return (
     
       <div className='h-screen w-screen flex flex-row'>
@@ -24,10 +32,10 @@ function App() {
           <div className='w-3/12 h-full bg-slate-200 drop-shadow-2xl z-[2]'>
             <Search longitude = {longitude} latitude = {latitude}/> 
           </div>
-          <div className='w-9/12 z-[1]'>
+          <div className='w-9/12 z-[1] relative'>
             <Maps longitude = {longitude} latitude = {latitude} zoom={zoom}/>
           </div>
-        </> : <h1>Loading...</h1>}
+        </> : <Loading />}
       </div>
   );
 }
