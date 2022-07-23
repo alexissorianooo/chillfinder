@@ -1,14 +1,23 @@
-import React, { useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import Maps from './components/Maps';
 import {Search} from './components/Search.jsx'
 import { useSelector } from 'react-redux';
 import { useLoadScript } from '@react-google-maps/api';
 
 function App() {
-  const longitude = useSelector(state => state.search.longitude)
-  const latitude = useSelector(state => state.search.latitude)
+  const longitude = useSelector(state => state.search.longitude) //useRef(121.7740) 
+  const latitude = useSelector(state => state.search.latitude) //useRef(12.8797) 
   const zoom = useSelector(state => state.search.zoom)
 
+  // useEffect(() => {
+  //   navigator.geolocation.getCurrentPosition((pos) => {
+  //     longitude.current = pos.coords.longitude
+  //     latitude.current = pos.coords.latitude
+  //   })
+  // },[])
+
+  // console.log(longitude.current, latitude.current)
+  
   const [libraries] = useState(['places']);
 
   const { isLoaded } = useLoadScript({
