@@ -1,6 +1,10 @@
 import React from 'react'
+import { useDispatch } from 'react-redux'
+import { search_endpoint } from '../Redux/features/searchSlice'
 
 function Results({places}){
+    const dispatch = useDispatch()
+
     const stars = []
     var rating = places.rating
     for(let i = 0; i<places.rating; i++){
@@ -11,14 +15,9 @@ function Results({places}){
             stars.push('half')
         }
     }
-    /**
-     * // TODO:
-     * results functionalities
-     * 1. onClick -> display directions from input location to clicked location
-     * 2. display info box with pics
-     */
+    
     return(
-        <div className='bg-blue-400 min-h-1/5 m-4 rounded-3xl result-effects'>
+        <div className='bg-blue-400 min-h-1/5 m-4 rounded-3xl result-effects' onClick={() => dispatch(search_endpoint({lat: places.location.lat, lng: places.location.lng}))}>
             <div className='bg-blue-400 min-h-1/4 flex flex-row justify-between items-center pl-3 pr-5 py-2 rounded-t-3xl'>
                 <div className={places.rating ? `text-3xl text-white font-bold w-4/5` : `text-3xl text-white font-bold`}>{places.name}</div>
                 {

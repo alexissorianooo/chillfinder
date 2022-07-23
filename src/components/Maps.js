@@ -1,9 +1,11 @@
-import React, { useState } from 'react'
-import { GoogleMap, Marker } from '@react-google-maps/api';
+import React, { useEffect, useState } from 'react'
+import { GoogleMap, Marker, DirectionsRenderer } from '@react-google-maps/api';
 import { useSelector } from 'react-redux';
 
 function Maps(props) {
   const search_active = useSelector(state => state.search.active)
+  const search_name = useSelector(state => state.search.name)
+  const search_endpoint = useSelector(state => state.search.endpoint)
   const center = {
     lat: props.latitude,
     lng: props.longitude
@@ -13,17 +15,21 @@ function Maps(props) {
   const [distance, setDistance] = useState(null)
   const [duration, setDuration] = useState(null)
 
-  async function calculateRoute() { // TODO: when results clicked this should run
+  async function calculateRoute() {
     const directionService = new google.maps.DirectionsService()  // eslint-disable-line
     const results = await directionService.route({
-      origin: '',
-      destination: '',
+      origin: center,
+      destination: search_endpoint,
       travelMode: google.maps.TravelMode.DRIVING // eslint-disable-line
     })
     setDirectionResponse(results)
     setDistance(results.routes[0].legs[0].distance.text)
     setDuration(results.routes[0].legs[0].duration.text)
   }
+
+  useEffect(() => {
+    calculateRoute()
+  },[search_endpoint])
 
   const [maps, setMaps] = useState( /** @type google.maps.Map */ (null)) // we can control the map
 
@@ -35,6 +41,7 @@ function Maps(props) {
       </svg>
     )
   }
+  console.log('search', search_active)
 
   return (
     <>
@@ -64,6 +71,7 @@ function Maps(props) {
           title='You are here'
           label='You are here...'
         />
+        {directionResponse && <DirectionsRenderer directions={directionResponse}/>}
       </GoogleMap>
     </>
   )

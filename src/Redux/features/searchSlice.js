@@ -5,7 +5,8 @@ const initialState = {
     longitude: 121.7740,
     latitude: 12.8797,
     zoom: 6,
-    active: false
+    active: false,
+    endpoint: '',
 }
 
 const searchSlice = createSlice({
@@ -26,9 +27,12 @@ const searchSlice = createSlice({
         },
         search_name: (state, action) => {
             state.name = action.payload
-        }
+        },
+        search_endpoint: (state, action) => {
+            state.endpoint = action.payload
+        },
     }
 })
 
 export default searchSlice.reducer
-export const { search_long, search_lat, search_zoom, search_active, search_name } = searchSlice.actions
+export const { search_long, search_lat, search_zoom, search_active, search_name, search_endpoint } = searchSlice.actions

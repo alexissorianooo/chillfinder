@@ -1,6 +1,6 @@
 import React,{useEffect, useRef, useState} from 'react'
 import { Autocomplete } from '@react-google-maps/api'
-import { search_lat, search_long, search_zoom, search_active,search_name } from '../Redux/features/searchSlice'
+import { search_lat, search_long, search_zoom, search_active,search_name, search_endpoint } from '../Redux/features/searchSlice'
 import { useDispatch, useSelector } from 'react-redux'
 import { fetchResults, results_latitude, results_longitude, results_radius } from '../Redux/features/resultsSlice'
 import Results from './Results'
@@ -32,6 +32,7 @@ export const Search = () => {
         )
     }
 
+    // TODO: reset not working well
     return(
         <>
             <div className='flex flex-col h-full'>
@@ -51,24 +52,40 @@ export const Search = () => {
                                             // dispatch(fetchResults({lat: searched.current.getPlace().geometry.location.lat(), lng: searched.current.getPlace().geometry.location.lng(), name: searched.current.getPlace().name}))
                                             dispatch(results_latitude(searched.current.getPlace().geometry.location.lat()))
                                             dispatch(results_longitude(searched.current.getPlace().geometry.location.lng()))
+                                            console.log(searched.current.getPlace())
                                         }}
                                         restrictions={{country: 'ph'}}
                                         // className='autoComplete' // tailWindCSS doesn't work
                                     >
                                         <input 
+                                            id='search_ID'
                                             className='search rounded-br-none rounded-tr-none'
                                             type='text'
                                             placeholder='City, Barangay...'
                                         />
                                     </Autocomplete>
                                 </div>
-                                <div className='w-[10%] flex justify-center items-center bg-slate-300 rounded-tr-md rounded-br-md hover:scale-105'>
+                                <div 
+                                    className='w-[10%] flex justify-center items-center bg-slate-300 rounded-tr-md rounded-br-md hover:scale-105'
+                                    onClick={() => {
+                                        dispatch(search_lat(12.8797))
+                                        dispatch(search_long(121.7740))
+                                        dispatch(search_zoom(6))
+                                        dispatch(search_active(false))
+                                        dispatch(search_endpoint(''))
+                                        dispatch(search_name('Philippines'))
+                                        dispatch(results_latitude(0))
+                                        dispatch(results_longitude(0))
+                                        dispatch(results_radius(1000))
+                                        document.getElementsByClassName('search').value = ''
+                                    }}
+                                >
                                     <ResetLocation />  
                                 </div>
                             </div>
                         </label>
                         <label className='input-label'>Radius in meters
-                            <input type='number' className='search' value={radius === 0 ? null : radius} onChange={handleRadiusChange}></input>
+                            <input type='number' id='radius_ID' className='search' value={radius === 0 ? null : radius} onChange={handleRadiusChange}></input>
                             Max: 5000
                         </label>
                     </div>
