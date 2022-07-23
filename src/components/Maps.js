@@ -70,7 +70,7 @@ function Maps(props) {
           title='You are here'
           label='You are here...'
         />
-        {directionResponse && search_endpoint ? <DirectionsRenderer directions={directionResponse}/> : null}
+        {directionResponse && search_endpoint ? <DirectionsRenderer directions={directionResponse} options={{polylineOptions: {strokeOpacity: 0.7,strokeColor: '#FF0000', strokeWeight: 8},}} /> : null}
       </GoogleMap>
     </>
   )
