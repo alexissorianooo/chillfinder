@@ -9,6 +9,22 @@ function Maps(props) {
     lng: props.longitude
   }
 
+  const [directionResponse, setDirectionResponse] = useState(null)
+  const [distance, setDistance] = useState(null)
+  const [duration, setDuration] = useState(null)
+
+  async function calculateRoute() { // TODO: when results clicked this should run
+    const directionService = new google.maps.DirectionsService()  // eslint-disable-line
+    const results = await directionService.route({
+      origin: '',
+      destination: '',
+      travelMode: google.maps.TravelMode.DRIVING // eslint-disable-line
+    })
+    setDirectionResponse(results)
+    setDistance(results.routes[0].legs[0].distance.text)
+    setDuration(results.routes[0].legs[0].duration.text)
+  }
+
   const [maps, setMaps] = useState( /** @type google.maps.Map */ (null)) // we can control the map
 
   const CenterButton = () => {
@@ -19,7 +35,6 @@ function Maps(props) {
       </svg>
     )
   }
-  console.log(center)
 
   return (
     <>
