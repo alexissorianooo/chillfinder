@@ -32,7 +32,6 @@ export const Search = () => {
         )
     }
 
-    // TODO: reset not working well
     return(
         <>
             <div className='flex flex-col h-full'>

@@ -41,6 +41,8 @@ function Maps(props) {
   }
   console.log('search', search_active)
 
+  //TODO: info box to display ditance and duration
+
   return (
     <>
       {
