@@ -7,6 +7,7 @@ const initialState = {
     zoom: 6,
     active: false,
     endpoint: '',
+    endpoint_name: '',
 }
 
 const searchSlice = createSlice({
@@ -31,8 +32,11 @@ const searchSlice = createSlice({
         search_endpoint: (state, action) => {
             state.endpoint = action.payload
         },
+        search_endpoint_name: (state, action) => {
+            state.endpoint_name = action.payload
+        }
     }
 })
 
 export default searchSlice.reducer
-export const { search_long, search_lat, search_zoom, search_active, search_name, search_endpoint } = searchSlice.actions
+export const { search_long, search_lat, search_zoom, search_active, search_name, search_endpoint, search_endpoint_name } = searchSlice.actions

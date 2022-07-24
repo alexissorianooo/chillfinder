@@ -1,6 +1,6 @@
 import React from 'react'
 import { useDispatch } from 'react-redux'
-import { search_endpoint } from '../Redux/features/searchSlice'
+import { search_endpoint, search_endpoint_name } from '../Redux/features/searchSlice'
 
 function Results({places}){
     const dispatch = useDispatch()
@@ -17,7 +17,13 @@ function Results({places}){
     }
     
     return(
-        <div className='bg-blue-400 min-h-1/5 m-4 rounded-3xl result-effects' onClick={() => dispatch(search_endpoint({lat: places.location.lat, lng: places.location.lng}))}>
+        <div 
+            className='bg-blue-400 min-h-1/5 m-4 rounded-3xl result-effects' 
+            onClick={() => {
+                dispatch(search_endpoint({lat: places.location.lat, lng: places.location.lng}))
+                dispatch(search_endpoint_name(places.name))
+            }}
+        >
             <div className='bg-blue-400 min-h-1/4 flex flex-row justify-between items-center pl-3 pr-5 py-2 rounded-t-3xl'>
                 <div className={places.rating ? `text-3xl text-white font-bold w-4/5` : `text-3xl text-white font-bold`}>{places.name}</div>
                 {

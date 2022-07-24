@@ -4,6 +4,8 @@ import { useSelector } from 'react-redux';
 
 function Maps(props) {
   const search_active = useSelector(state => state.search.active)
+  const search_name = useSelector(state => state.search.name)
+  const search_endpoint_name = useSelector(state => state.search.endpoint_name)
   const search_endpoint = useSelector(state => state.search.endpoint)
   const center = {
     lat: props.latitude,
@@ -23,6 +25,7 @@ function Maps(props) {
     setDirectionResponse(results)
     setDistance(results.routes[0].legs[0].distance.text)
     setDuration(results.routes[0].legs[0].duration.text)
+    console.log(results.routes[0])
   }
 
   useEffect(() => {
@@ -33,23 +36,36 @@ function Maps(props) {
 
   const CenterButton = () => {
     return(
-      <svg xmlns="http://www.w3.org/2000/svg" className="h-14 w-14 text-red-500" fill="#fca5a5" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+      <svg xmlns="http://www.w3.org/2000/svg" className="h-12 w-1h-12 text-slate-800" fill="#ffffff" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
         <path strokeLinecap="round" strokeLinejoin="round" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
         <path strokeLinecap="round" strokeLinejoin="round" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
       </svg>
     )
   }
-  console.log('search', search_active)
 
-  //TODO: info box to display ditance and duration
-
+  console.log('maps', maps?.center?.lat(), maps?.center?.lng())
   return (
     <>
       {
         search_active ? 
-          <div className="z-[2] left-2 top-6 absolute bg-slate-100 h-16 w-16 rounded-full flex justify-center items-center hover:animate-bounce" onClick={() => {maps.panTo(center)}}>
+          directionResponse && search_endpoint ? 
+            <>
+              
+              <div className='bg-slate-300 text-[25px] p-3 absolute top-6 left-3 z-[2]'>
+                <div><span className='font-bold'>{search_name}</span> to <span className='font-bold'>{search_endpoint_name}</span></div>
+                <div className=' flex flex-row justify-evenly items-center'>
+                  <div className="bg-slate-300 h-12 w-12 rounded-full flex justify-center items-center hover:scale-105 hover:shadow-lg" onClick={() => {maps.panTo(center)}}>
+                    {CenterButton()}
+                  </div>
+                  <div className='p-3'><span className='font-bold'>Distance:</span> {distance}</div>
+                  <div className='p-3'><span className='font-bold'>Travel Duration:</span> {duration}</div>
+                </div>
+              </div>
+            </> 
+          : 
+          <div className="z-[2] left-2 top-6 absolute bg-slate-300 h-16 w-16 rounded-full flex justify-center items-center hover:animate-bounce" onClick={() => {maps.panTo(center)}}>
             {CenterButton()}
-          </div> 
+          </div>
         : null
       }
       <GoogleMap
@@ -62,14 +78,14 @@ function Maps(props) {
           mapTypeControl: false,
           fullscreenControl: false,
         }}
-        onLoad={(map) => setMaps(map)}
+        onLoad={(mapLoad) => setMaps(mapLoad)}
       >
         <Marker
           position={center}
           // animation={1}
           visible={search_active}
           title='You are here'
-          label='You are here...'
+          // label='You are here...'
         />
         {directionResponse && search_endpoint ? <DirectionsRenderer directions={directionResponse} options={{polylineOptions: {strokeOpacity: 0.7,strokeColor: '#FF0000', strokeWeight: 8},}} /> : null}
       </GoogleMap>
