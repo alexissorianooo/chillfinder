@@ -10,7 +10,6 @@ export const Search = () => {
     const results = useSelector(state => state.results)
     const searched = useRef(null)
     const dispatch = useDispatch()
-    console.log("results",results)
 
     const [radius, setRadius] = useState(1000)
 
@@ -30,6 +29,9 @@ export const Search = () => {
             </svg>
         )
     }
+
+    // useState for Select element
+    const [selectOpt, setSelectOpt] = useState()
 
     return(
         <>
@@ -51,7 +53,6 @@ export const Search = () => {
                                             // dispatch(fetchResults({lat: searched.current.getPlace().geometry.location.lat(), lng: searched.current.getPlace().geometry.location.lng(), name: searched.current.getPlace().name}))
                                             dispatch(results_latitude(searched.current.getPlace().geometry.location.lat()))
                                             dispatch(results_longitude(searched.current.getPlace().geometry.location.lng()))
-                                            console.log(searched.current.getPlace())
                                         }}
                                         restrictions={{country: 'ph'}}
                                         // className='autoComplete' // tailWindCSS doesn't work
@@ -90,7 +91,7 @@ export const Search = () => {
                             Max: 5000
                         </label>
                     </div>
-                    <div className=' bg-slate-300 h-1/2 w-10/12 mx-auto rounded-2xl p-3 pb-0'> Categories
+                    <div className=' bg-slate-300 w-10/12 mx-auto rounded-2xl p-3'> Categories
                         <div className='categoriesDiv'>
                             <button className='button button-effects rounded-xl bg-slate-100 p-2' onClick={() => {dispatch(results_type('restaurant'))}}>
                                 Restaurant
@@ -99,11 +100,39 @@ export const Search = () => {
                             <button className='button button-effects rounded-xl bg-slate-100 p-2' onClick={() => {dispatch(results_type('cafe'))}}> 
                                 Cafe
                             </button>
+                            <button className='button button-effects rounded-xl bg-slate-100 p-2' onClick={() => {dispatch(results_type('police'))}}> 
+                                Police
+                            </button>
+                            <button className='button button-effects rounded-xl bg-slate-100 p-2' onClick={() => {dispatch(results_type('pharmacy'))}}> 
+                                Pharmacy
+                            </button>
+                            <button className='button button-effects rounded-xl bg-slate-100 p-2' onClick={() => {dispatch(results_type('hospital'))}}> 
+                                Hospital
+                            </button>
                         </div>
+                        <select 
+                            value={selectOpt} 
+                            defaultValue={'none'}
+                            onChange={(e) => {
+                                dispatch(results_type(e.target.value))
+                                setSelectOpt(e.target.value)
+                            }}
+                            className="button w-11/12 p-2 m-3"
+                        >
+                            <option value={'none'} disabled>Others...</option>
+                            <option value="gym">Gym</option>
+                            <option value="gas_station">Gas Station</option>
+                            <option value="laundry">Laundry</option>
+                            <option value="atm">Atm</option>
+                            <option value="bank">Bank</option>
+                            <option value="lodging">Lodging</option>
+                            <option value="parking">Parking</option>
+                        </select>
                     </div>
+                    <div className='w-10/12 m-auto pt-3'>{places.length} {results.type} found</div>
                 </div>
                 <div className='scrollBar h-4/6 w-full mt-3'>
-                <Suspense fallback={<h1>Loading...</h1>}>
+                <Suspense fallback={<div className='text-3xl'>Loading...</div>}>
                     {places ? places.map((item,index) => <Results key={index} places={item}/>) : null}
                 </Suspense>
                 {/* {

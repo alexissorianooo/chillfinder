@@ -38,7 +38,11 @@ function Maps(props) {
   // FOR NEARBY PLACES
   async function searchNearby() {
     const service = new google.maps.places.PlacesService(maps) // eslint-disable-line
-    service.nearbySearch({location: center, radius: results_radius, type: results_type}, ((results) => {
+    service.nearbySearch({
+      location: center, 
+      radius: results_radius, 
+      type: results_type, 
+    }, ((results) => {
       dispatch(results_places(results))
     }));
   }
@@ -60,7 +64,6 @@ function Maps(props) {
     )
   }
 
-  console.log('maps', maps?.center?.lat(), maps?.center?.lng())
   return (
     <>
       {
