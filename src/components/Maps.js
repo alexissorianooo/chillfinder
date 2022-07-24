@@ -109,7 +109,7 @@ function Maps(props) {
           </>
           : null
         }
-        {directionResponse && search_endpoint ? <DirectionsRenderer directions={directionResponse} options={{polylineOptions: {strokeOpacity: 0.7,strokeColor: '#FF0000', strokeWeight: 8},}} /> : null}
+        {directionResponse && search_endpoint ? <DirectionsRenderer directions={directionResponse} options={{polylineOptions: {strokeOpacity: 0.9,strokeColor: 'rgb(239 68 68)', strokeWeight: 10}}} /> : null}
       </GoogleMap>
     </>
   )
