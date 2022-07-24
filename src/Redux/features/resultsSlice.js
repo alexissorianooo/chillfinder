@@ -4,46 +4,14 @@ import { places } from "./resultsData";
 
 const initialState = {
     loading: false,
-    places: places,
+    places: [],
     error: '',
     longitude: 0,
     latitude: 0,
-    radius: 0
+    radius: 0,
+    type: '',
 }
-console.log(initialState)
 export const fetchResults = createAsyncThunk('results/fetchResults', ({lat,lng,radius,type}) =>{
-
-    // const options = {
-    //     method: 'GET',
-    //     url: 'https://nearby-places.p.rapidapi.com/v2/nearby',
-    //     params: {lat: lat, lng: lng, type: 'coffee shop', radius: '10000'},
-    //     headers: {
-    //       'X-RapidAPI-Key': process.env.REACT_APP_NEARBY_KEY,
-    //       'X-RapidAPI-Host': 'nearby-places.p.rapidapi.com'
-    //     }
-    //   };
-      
-    //   axios.request(options).then(function (response) {
-    //       console.log(response.data);
-    //   }).catch(function (error) {
-    //       console.error(error);
-    //   });
-
-    // google nearby below
-
-    // const options = {
-    // method: 'GET',
-    // url: 'https://nearby-places.p.rapidapi.com/nearby',
-    // params: {lat: lat, lng: lng, type: type, radius: radius},
-    // headers: {
-    //     'X-RapidAPI-Key': process.env.REACT_APP_NEARBY_KEY,
-    //     'X-RapidAPI-Host': 'nearby-places.p.rapidapi.com'
-    // }
-    // };
-
-    // return axios.request(options).then(res => res.data);
-
-    // console.log(lat,lng,radius, type)
 })
 
 
@@ -59,6 +27,15 @@ const resultsSlice = createSlice({
         },
         results_radius: (state, action) =>{
             state.radius = action.payload
+        },
+        mapInstance: (state,action) =>{
+            state.mapInstance = action.payload
+        },
+        results_type: (state, action) => {
+            state.type = action.payload
+        },
+        results_places: (state, action) => {
+            state.places = action.payload
         }
     },
     extraReducers: (builder) => {
@@ -79,4 +56,4 @@ const resultsSlice = createSlice({
 })
 
 export default resultsSlice.reducer
-export const {results_latitude, results_longitude, results_radius} = resultsSlice.actions
+export const {results_latitude, results_longitude, results_radius, results_type, results_places} = resultsSlice.actions
