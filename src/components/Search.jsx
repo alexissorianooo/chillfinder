@@ -1,8 +1,8 @@
-import React,{useEffect, useRef, useState} from 'react'
+import React,{Suspense, useEffect, useRef, useState} from 'react'
 import { Autocomplete } from '@react-google-maps/api'
 import { search_lat, search_long, search_zoom, search_active,search_name, search_endpoint } from '../Redux/features/searchSlice'
 import { useDispatch, useSelector } from 'react-redux'
-import { fetchResults, results_latitude, results_longitude, results_radius } from '../Redux/features/resultsSlice'
+import { results_latitude, results_longitude, results_places, results_radius, results_type } from '../Redux/features/resultsSlice'
 import Results from './Results'
 
 export const Search = () => {
@@ -10,7 +10,6 @@ export const Search = () => {
     const results = useSelector(state => state.results)
     const searched = useRef(null)
     const dispatch = useDispatch()
-    // places.forEach(item => console.log(item))
     console.log("results",results)
 
     const [radius, setRadius] = useState(1000)
@@ -76,6 +75,7 @@ export const Search = () => {
                                         dispatch(search_name('Philippines'))
                                         dispatch(results_latitude(0))
                                         dispatch(results_longitude(0))
+                                        dispatch(results_places([]))
                                         setRadius(1000)
                                         document.getElementById('search_ID').value = ''
                                         document.getElementById('radius_ID').value = radius
@@ -92,20 +92,24 @@ export const Search = () => {
                     </div>
                     <div className=' bg-slate-300 h-1/2 w-10/12 mx-auto rounded-2xl p-3 pb-0'> Categories
                         <div className='categoriesDiv'>
-                            <button className='button button-effects' onClick={() => {dispatch(fetchResults({lat: results.latitude, lng: results.longitude, radius: results.radius, type: 'restaurant'}))}}>
-                                <i className="button-text fa-solid fa-utensils text-[#e6e6e6]"></i>
+                            <button className='button button-effects rounded-xl bg-slate-100 p-2' onClick={() => {dispatch(results_type('restaurant'))}}>
+                                Restaurant
                             </button>
-                            <button className='button button-effects' onClick={() => {dispatch(fetchResults({lat: results.latitude, lng: results.longitude, radius: results.radius, type: 'cafe'}))}}>
-                                <i className="button-text fa-solid fa-mug-hot text-[#6F4E37]"></i>
+                            {/* dispatch(fetchResults({lat: results.latitude, lng: results.longitude, radius: results.radius, type: 'cafe'})) */}
+                            <button className='button button-effects rounded-xl bg-slate-100 p-2' onClick={() => {dispatch(results_type('cafe'))}}> 
+                                Cafe
                             </button>
                         </div>
                     </div>
                 </div>
                 <div className='scrollBar h-4/6 w-full mt-3'>
-                {
+                <Suspense fallback={<h1>Loading...</h1>}>
+                    {places ? places.map((item,index) => <Results key={index} places={item}/>) : null}
+                </Suspense>
+                {/* {
                     results.loading ? <h1>Loading...</h1> :
                     places ? places.map((item,index) => <Results key={index} places={item}/>) : null
-                }
+                } */}
                 </div>
             </div>
         </>

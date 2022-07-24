@@ -20,7 +20,7 @@ function Results({places}){
         <div 
             className='bg-blue-400 min-h-1/5 m-4 rounded-3xl result-effects' 
             onClick={() => {
-                dispatch(search_endpoint({lat: places.location.lat, lng: places.location.lng}))
+                dispatch(search_endpoint({lat: places?.geometry?.location?.lat(), lng: places?.geometry?.location?.lng()}))
                 dispatch(search_endpoint_name(places.name))
             }}
         >
@@ -35,9 +35,8 @@ function Results({places}){
                 }
             </div>
             <div className='bg-blue-200 min-h-3/4 p-3 rounded-b-3xl'>
-                <div className='pb-2 text-xl'><span className='font-bold'>Address:</span> {places.address}</div>
-                <div className='pb-2 text-xl'><span className='font-bold'>Longitude:</span> {places.location.lng}, <span className='font-bold'>Latitude:</span> {places.location.lat}</div>
-                <div className='pb-2 text-xl'><span className='font-bold'>Distance:</span> {places.distanceMeter}</div>
+                <div className='pb-2 text-xl'><span className='font-bold'>Address:</span> {places.vicinity}</div>
+                <div className='pb-2 text-xl'><span className='font-bold'>Longitude:</span> {places?.geometry?.location?.lng()}, <span className='font-bold'>Latitude:</span> {places?.geometry?.location?.lat()}</div>
             </div>
         </div>
     )

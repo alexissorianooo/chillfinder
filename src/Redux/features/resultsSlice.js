@@ -2,16 +2,23 @@ import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import axios from 'axios'
 import { places } from "./resultsData";
 
+// const service = new google.maps.places.PlacesService(mapInstance) // eslint-disable-line
+
+
 const initialState = {
     loading: false,
-    places: places,
+    places: [],
     error: '',
     longitude: 0,
     latitude: 0,
-    radius: 0
+    radius: 0,
+    type: '',
 }
 console.log(initialState)
 export const fetchResults = createAsyncThunk('results/fetchResults', ({lat,lng,radius,type}) =>{
+
+    // service.nearbySearch({location: {lat: lat, lng: lng}, radius: radius, type: type}, (results) => console.log(results));
+
 
     // const options = {
     //     method: 'GET',
@@ -44,6 +51,8 @@ export const fetchResults = createAsyncThunk('results/fetchResults', ({lat,lng,r
     // return axios.request(options).then(res => res.data);
 
     // console.log(lat,lng,radius, type)
+
+
 })
 
 
@@ -59,6 +68,15 @@ const resultsSlice = createSlice({
         },
         results_radius: (state, action) =>{
             state.radius = action.payload
+        },
+        mapInstance: (state,action) =>{
+            state.mapInstance = action.payload
+        },
+        results_type: (state, action) => {
+            state.type = action.payload
+        },
+        results_places: (state, action) => {
+            state.places = action.payload
         }
     },
     extraReducers: (builder) => {
@@ -79,4 +97,4 @@ const resultsSlice = createSlice({
 })
 
 export default resultsSlice.reducer
-export const {results_latitude, results_longitude, results_radius} = resultsSlice.actions
+export const {results_latitude, results_longitude, results_radius, results_type, results_places} = resultsSlice.actions

@@ -1,12 +1,16 @@
 import React, { useEffect, useState } from 'react'
 import { GoogleMap, Marker, DirectionsRenderer, InfoBox } from '@react-google-maps/api';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
+import { results_places } from '../Redux/features/resultsSlice';
 
 function Maps(props) {
+  const dispatch = useDispatch()
   const search_active = useSelector(state => state.search.active)
   const search_name = useSelector(state => state.search.name)
   const search_endpoint_name = useSelector(state => state.search.endpoint_name)
   const search_endpoint = useSelector(state => state.search.endpoint)
+  const results_radius = useSelector(state => state.results.radius)
+  const results_type = useSelector(state => state.results.type)
   const center = {
     lat: props.latitude,
     lng: props.longitude
@@ -25,12 +29,25 @@ function Maps(props) {
     setDirectionResponse(results)
     setDistance(results.routes[0].legs[0].distance.text)
     setDuration(results.routes[0].legs[0].duration.text)
-    console.log(results.routes[0])
   }
 
   useEffect(() => {
     calculateRoute()
   },[search_endpoint])
+
+  // FOR NEARBY PLACES
+  async function searchNearby() {
+    const service = new google.maps.places.PlacesService(maps) // eslint-disable-line
+    service.nearbySearch({location: center, radius: results_radius, type: results_type}, ((results) => {
+      dispatch(results_places(results))
+    }));
+  }
+
+  useEffect(() => {
+    if(search_active && results_type && center && results_radius){
+      searchNearby()
+    }
+  },[center, results_type, results_radius])
 
   const [maps, setMaps] = useState( /** @type google.maps.Map */ (null)) // we can control the map
 
@@ -78,14 +95,14 @@ function Maps(props) {
           mapTypeControl: false,
           fullscreenControl: false,
         }}
-        onLoad={(mapLoad) => setMaps(mapLoad)}
+        onLoad={(mapLoad) => {
+          setMaps(mapLoad)
+        }}
       >
         <Marker
           position={center}
-          // animation={1}
           visible={search_active}
           title='You are here'
-          // label='You are here...'
         />
         {
         directionResponse && search_endpoint ? 
