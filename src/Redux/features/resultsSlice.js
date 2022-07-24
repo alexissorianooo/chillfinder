@@ -1,6 +1,6 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
-import axios from 'axios'
-import { places } from "./resultsData";
+// import axios from 'axios'
+// import { places } from "./resultsData";
 
 const initialState = {
     loading: false,

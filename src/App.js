@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from 'react'
+import React, { useState } from 'react'
 import Maps from './components/Maps';
 import {Search} from './components/Search.jsx'
 import { useSelector } from 'react-redux';

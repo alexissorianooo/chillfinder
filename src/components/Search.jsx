@@ -20,7 +20,7 @@ export const Search = () => {
 
     useEffect(()=> {
         dispatch(results_radius(radius))
-    },[radius])
+    },[radius, dispatch])
 
     const ResetLocation = () => {
         return(

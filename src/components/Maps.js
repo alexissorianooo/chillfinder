@@ -19,35 +19,35 @@ function Maps(props) {
   const [distance, setDistance] = useState(null)
   const [duration, setDuration] = useState(null)
 
-  async function calculateRoute() {
-    const directionService = new google.maps.DirectionsService()  // eslint-disable-line
-    const results = await directionService.route({
-      origin: center,
-      destination: search_endpoint,
-      travelMode: google.maps.TravelMode.DRIVING // eslint-disable-line
-    })
-    setDirectionResponse(results)
-    setDistance(results.routes[0].legs[0].distance.text)
-    setDuration(results.routes[0].legs[0].duration.text)
-  }
-
   useEffect(() => {
+    async function calculateRoute() {
+      const directionService = new google.maps.DirectionsService()  // eslint-disable-line
+      const results = await directionService.route({
+        origin: center,
+        destination: search_endpoint,
+        travelMode: google.maps.TravelMode.DRIVING // eslint-disable-line
+      })
+      setDirectionResponse(results)
+      setDistance(results.routes[0].legs[0].distance.text)
+      setDuration(results.routes[0].legs[0].duration.text)
+    }
     calculateRoute()
   },[search_endpoint])
 
-  // FOR NEARBY PLACES
-  async function searchNearby() {
-    const service = new google.maps.places.PlacesService(maps) // eslint-disable-line
-    service.nearbySearch({
-      location: center, 
-      radius: results_radius, 
-      type: results_type, 
-    }, ((results) => {
-      dispatch(results_places(results))
-    }));
-  }
-
   useEffect(() => {
+
+    // FOR NEARBY PLACES
+    async function searchNearby() {
+      const service = new google.maps.places.PlacesService(maps) // eslint-disable-line
+      service.nearbySearch({
+        location: center, 
+        radius: results_radius, 
+        type: results_type, 
+      }, ((results) => {
+        dispatch(results_places(results))
+      }));
+    }
+
     if(search_active && results_type && center && results_radius){
       searchNearby()
     }
