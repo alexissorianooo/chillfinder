@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { GoogleMap, Marker, DirectionsRenderer } from '@react-google-maps/api';
+import { GoogleMap, Marker, DirectionsRenderer, InfoBox } from '@react-google-maps/api';
 import { useSelector } from 'react-redux';
 
 function Maps(props) {
@@ -87,6 +87,28 @@ function Maps(props) {
           title='You are here'
           // label='You are here...'
         />
+        {
+        directionResponse && search_endpoint ? 
+          <>
+            <InfoBox
+              options={{closeBoxURL: '', enableEventPropagation: true }}
+              position={center}
+            >
+              <div className=' bg-red-300 p-2'>
+                <div className='text-[15px]'>{search_name}</div>
+              </div>
+            </InfoBox>
+            <InfoBox
+              options={{closeBoxURL: '', enableEventPropagation: true }}
+              position={search_endpoint}
+            >
+              <div className=' bg-red-300 p-2'>
+                <div className='text-[15px]'>{search_endpoint_name}</div>
+              </div>
+            </InfoBox>
+          </>
+          : null
+        }
         {directionResponse && search_endpoint ? <DirectionsRenderer directions={directionResponse} options={{polylineOptions: {strokeOpacity: 0.7,strokeColor: '#FF0000', strokeWeight: 8},}} /> : null}
       </GoogleMap>
     </>
