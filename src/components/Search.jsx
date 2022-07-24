@@ -29,6 +29,13 @@ export const Search = () => {
             </svg>
         )
     }
+    const CloseIcon = () => {
+        return(
+            <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z" />
+            </svg>
+        )
+    }
 
     // useState for Select element
     const [selectOpt, setSelectOpt] = useState()
@@ -37,6 +44,7 @@ export const Search = () => {
         <>
             <div className='flex flex-col h-full'>
                 <div className='h-2/6 w-full mt-12'>
+                    <CloseIcon />
                     <div className='searchBarDiv'>
                         <label className='input-label'>Location
                             <div className='flex flex-row'>
@@ -103,12 +111,6 @@ export const Search = () => {
                             <button className='button button-effects rounded-xl bg-slate-100 p-2' onClick={() => {dispatch(results_type('police'))}}> 
                                 Police
                             </button>
-                            <button className='button button-effects rounded-xl bg-slate-100 p-2' onClick={() => {dispatch(results_type('pharmacy'))}}> 
-                                Pharmacy
-                            </button>
-                            <button className='button button-effects rounded-xl bg-slate-100 p-2' onClick={() => {dispatch(results_type('hospital'))}}> 
-                                Hospital
-                            </button>
                         </div>
                         <select 
                             value={selectOpt} 
@@ -127,6 +129,8 @@ export const Search = () => {
                             <option value="bank">Bank</option>
                             <option value="lodging">Lodging</option>
                             <option value="parking">Parking</option>
+                            <option value="pharmacy">Pharmacy</option>
+                            <option value="hospital">Hospital</option>
                         </select>
                     </div>
                     <div className='w-10/12 m-auto pt-3'>{places.length} {results.type} found</div>

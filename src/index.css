@@ -12,8 +12,9 @@
     .input-label{
         @apply w-5/6 mb-5
     }
+    /* flex 2xl:flex-row 2xl:justify-evenly 2xl:items-center */
     .categoriesDiv{ 
-        @apply mt-3 flex flex-row justify-evenly items-center
+        @apply mt-3 flex flex-col xl:grid xl:grid-cols-3 gap-3 text-[10px] sm:text-base
     }
     .result-effects{
         @apply hover:scale-105 hover:shadow-md

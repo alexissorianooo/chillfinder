@@ -38,10 +38,10 @@ function App() {
       <div className='h-screen w-screen flex flex-row'>
         {isLoaded ?
         <>
-          <div className='w-3/12 h-full bg-slate-200 drop-shadow-2xl z-[2]'>
+          <div className='fixed w-10/12 top-1/2 left-1/2 transform -translate-y-1/2 -translate-x-1/2 2xl:-translate-x-0 2xl:left-0 2xl:w-3/12 2xl:relative 2xl:h-full bg-slate-200 drop-shadow-2xl z-[2] '>
             <Search longitude = {longitude} latitude = {latitude}/> 
           </div>
-          <div className='w-9/12 z-[1] relative'>
+          <div className='fixed w-full 2xl:w-9/12 z-[1] 2xl:relative'>
             <Maps longitude = {longitude} latitude = {latitude} zoom={zoom}/>
           </div>
         </> : <Loading />}
