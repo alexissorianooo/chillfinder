@@ -32,7 +32,7 @@ function Maps(props) {
       setDuration(results.routes[0].legs[0].duration.text)
     }
     calculateRoute()
-  },[search_endpoint])
+  },[search_endpoint]) // eslint-disable-line
 
   useEffect(() => {
 
@@ -51,7 +51,7 @@ function Maps(props) {
     if(search_active && results_type && center && results_radius){
       searchNearby()
     }
-  },[center, results_type, results_radius])
+  },[center, results_type, results_radius])  // eslint-disable-line
 
   const [maps, setMaps] = useState( /** @type google.maps.Map */ (null)) // we can control the map
 
