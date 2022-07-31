@@ -42,8 +42,8 @@ export const Search = () => {
 
     return(
         <>
-            <div className='flex flex-col h-full'>
-                <div className='2xl:h-2/6 w-full mt-3 2xl:mt-12'>
+            <div className='flex flex-col h-full justify-between'>
+                <div className='2xl:h-2/6 w-full mt-3 2xl:mt-6'>
                     {/* <CloseIcon /> */}
                     <div className='searchBarDiv'>
                         <label className='input-label'>Location
@@ -99,7 +99,7 @@ export const Search = () => {
                             Max: 5000
                         </label>
                     </div>
-                    <div className=' bg-slate-300 w-10/12 mx-auto rounded-2xl p-3'> Categories
+                    <div className='2xl:my-4 bg-slate-300 w-10/12 mx-auto rounded-2xl p-3'> Categories
                         <div className='categoriesDiv'>
                             <button className='button button-effects rounded-xl bg-slate-100 p-2' onClick={() => {dispatch(results_type('restaurant'))}}>
                                 Restaurant
@@ -133,9 +133,9 @@ export const Search = () => {
                             <option value="hospital">Hospital</option>
                         </select>
                     </div>
-                    <div className='w-10/12 m-auto pt-3'>{places.length} {results.type} found</div>
                 </div>
-                <div className='scrollBar h-4/6 w-full mt-3'>
+                <div className='w-10/12 h-[10%] m-auto pt-3 flex flex-col justify-center 2xl:justify-end'>{places.length} {results.type} found</div>
+                <div className='scrollBar h-4/6 2xl:h-[55%] w-full mt-3'>
                 <Suspense fallback={<div className='text-3xl'>Loading...</div>}>
                     {places ? places.map((item,index) => <Results key={index} places={item}/>) : null}
                 </Suspense>
