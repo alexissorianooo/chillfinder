@@ -20,7 +20,7 @@
         @apply hover:scale-105 hover:shadow-md
     }
     .button{
-        @apply  rounded-3xl
+        @apply rounded-3xl
     }
     .button-text{
         @apply text-8xl p-2
@@ -48,10 +48,10 @@
         @apply bg-blue-400 flex flex-col justify-start pl-3 pr-5 py-2 rounded-t-3xl
     }
     .results-title-desktop{
-        @apply text-2xl text-white font-bold 
+        @apply text-lg text-white font-bold 
     }
     .results-title-laptop{
-        @apply text-xl text-white font-bold 
+        @apply text-base text-white font-bold 
     }
     /* End of results component design */
 }

@@ -46,7 +46,7 @@ export const Search = () => {
                 <div className='2xl:h-2/6 w-full mt-3 2xl:mt-6'>
                     {/* <CloseIcon /> */}
                     <div className='searchBarDiv'>
-                        <label className='input-label'>Location
+                        <label className='input-label text-[15px]'>Location
                             <div className='flex flex-row'>
                                 <div className='w-[90%]'>
                                     <Autocomplete
@@ -67,7 +67,7 @@ export const Search = () => {
                                     >
                                         <input 
                                             id='search_ID'
-                                            className='search rounded-br-none rounded-tr-none'
+                                            className='search rounded-br-none rounded-tr-none text-[15px]'
                                             type='text'
                                             placeholder='City, Barangay...'
                                         />
@@ -94,21 +94,21 @@ export const Search = () => {
                                 </div>
                             </div>
                         </label>
-                        <label className='input-label'>Radius in meters
-                            <input type='number' id='radius_ID' className='search' value={radius === 0 ? null : radius} onChange={handleRadiusChange}></input>
+                        <label className='input-label text-[15px]'>Radius in meters
+                            <input type='number' id='radius_ID' className='search text-[15px]' value={radius === 0 ? null : radius} onChange={handleRadiusChange}></input>
                             Max: 5000
                         </label>
                     </div>
-                    <div className='2xl:my-4 bg-slate-300 w-10/12 mx-auto rounded-2xl p-3'> Categories
+                    <div className='2xl:my-4 bg-slate-300 w-10/12 mx-auto rounded-2xl p-3 text-[10px] 2xl:text-[15px]'> Categories
                         <div className='categoriesDiv'>
-                            <button className='button button-effects rounded-xl bg-slate-100 p-2' onClick={() => {dispatch(results_type('restaurant'))}}>
+                            <button className='button button-effects rounded-xl bg-slate-100 p-2 text-[10px] 2xl:text-[15px]' onClick={() => {dispatch(results_type('restaurant'))}}>
                                 Restaurant
                             </button>
                             {/* dispatch(fetchResults({lat: results.latitude, lng: results.longitude, radius: results.radius, type: 'cafe'})) */}
-                            <button className='button button-effects rounded-xl bg-slate-100 p-2' onClick={() => {dispatch(results_type('cafe'))}}> 
+                            <button className='button button-effects rounded-xl bg-slate-100 p-2 text-[10px] 2xl:text-[15px]' onClick={() => {dispatch(results_type('cafe'))}}> 
                                 Cafe
                             </button>
-                            <button className='button button-effects rounded-xl bg-slate-100 p-2' onClick={() => {dispatch(results_type('police'))}}> 
+                            <button className='button button-effects rounded-xl bg-slate-100 p-2 text-[10px] 2xl:text-[15px]' onClick={() => {dispatch(results_type('police'))}}> 
                                 Police
                             </button>
                         </div>
@@ -119,7 +119,7 @@ export const Search = () => {
                                 dispatch(results_type(e.target.value))
                                 setSelectOpt(e.target.value)
                             }}
-                            className="button w-11/12 p-2 m-3"
+                            className="button w-full p-2 my-3"
                         >
                             <option value={'none'} disabled>Others...</option>
                             <option value="gym">Gym</option>

@@ -37,8 +37,8 @@ function Results({places}){
                 }
             </div>
             <div className='bg-blue-200 min-h-3/4 p-3 rounded-b-3xl'>
-                <div className='pb-2 2xl:text-xl text-base'><span className='font-bold'>Address:</span> {places.vicinity}</div>
-                <div className='pb-2 2xl:text-xl text-base'><span className='font-bold'>Longitude:</span> {places?.geometry?.location?.lng()}, <span className='font-bold'>Latitude:</span> {places?.geometry?.location?.lat()}</div>
+                <div className='pb-2 2xl:text-lg text-sm'><span className='font-bold'>Address:</span> {places.vicinity}</div>
+                <div className='pb-2 2xl:text-lg text-sm'><span className='font-bold'>Longitude:</span> {places?.geometry?.location?.lng()}, <span className='font-bold'>Latitude:</span> {places?.geometry?.location?.lat()}</div>
             </div>
         </div>
     )
