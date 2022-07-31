@@ -8,6 +8,7 @@ Tech Stack: </br>
 -React.js </br>
 -JavaScript </br>
 -TailwindCSS </br>
+-Redux Toolkit </br>
 
 APIs:</br>
 -Google Maps API </br>
