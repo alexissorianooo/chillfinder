@@ -89,6 +89,6 @@
 
 @media screen and (max-width: 640px){
     .pac-container{
-        width: 100vw !important;
+        width: 95vw !important;
     }
 }
