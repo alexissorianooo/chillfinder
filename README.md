@@ -1,4 +1,6 @@
 # Chill Finder!
+Created this web application for me and my friends to easily find locations to hangout</br>
+
 View the live application here: </br>
 https://chillfinder.netlify.app
 
