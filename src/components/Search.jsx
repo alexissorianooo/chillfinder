@@ -134,7 +134,7 @@ export const Search = () => {
                         </select>
                     </div>
                 </div>
-                <div className='hidden sm:search-result-count-desktop'>Found {places.length} items</div>
+                <div className='hidden sm:search-result-count-desktop'>Found {places.length} {results.type}</div>
                 <div className='hidden sm:search-result-desktop'>
                     <Suspense fallback={<div className='text-3xl'>Loading...</div>}>
                         {places ? places.map((item,index) => <Results key={index} places={item}/>) : null}

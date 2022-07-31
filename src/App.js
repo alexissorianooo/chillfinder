@@ -45,7 +45,7 @@ function App() {
             <Search longitude = {longitude} latitude = {latitude}/> 
           </div>
           <div className='results-mobile sm:hidden'>
-            <div className='sm:hidden'>Found {places.length}</div>
+            <div className='sm:hidden'>Found {places.length} {results.type}</div>
             <div className='search-result-mobile'>
               <Suspense fallback={<div className='text-3xl'>Loading...</div>}>
                   {places ? places.map((item,index) => <Results key={index} places={item}/>) : null}
