@@ -18,25 +18,27 @@ function Results({places}){
     
     return(
         <div 
-            className='bg-blue-400 min-h-1/5 m-4 rounded-3xl result-effects' 
+            className='bg-blue-400 m-4 rounded-3xl result-effects' 
             onClick={() => {
                 dispatch(search_endpoint({lat: places?.geometry?.location?.lat(), lng: places?.geometry?.location?.lng()}))
                 dispatch(search_endpoint_name(places.name))
             }}
         >
-            <div className='bg-blue-400 min-h-1/4 flex flex-row justify-between items-center pl-3 pr-5 py-2 rounded-t-3xl'>
-                <div className={places.rating ? `text-3xl text-white font-bold w-4/5` : `text-3xl text-white font-bold`}>{places.name}</div>
+            <div className='results-title-design-laptop 2xl:results-title-design-desktop'>
+                <div className={places.rating ? `results-title-laptop 2xl:results-title-desktop 2xl:w-3/5` : `results-title-laptop 2xl:results-title-desktop`}>{places.name}</div>
                 {
                     places.rating ? 
-                        <div className='w-1/5 text-right'>
-                            {stars.map((item, index) => item === 'one' ? <i key={index} className="fa-solid fa-star text-yellow-300"></i> : <i key={index} className="fa-solid fa-star-half text-yellow-300"></i>)}
-                        </div> 
+                        <>
+                            <div className='2xl:w-2/5 2xl:text-right'>
+                                {stars.map((item, index) => item === 'one' ? <i key={index} className="fa-solid fa-star text-yellow-300"></i> : <i key={index} className="fa-solid fa-star-half text-yellow-300"></i>)}
+                            </div>
+                        </>
                         : null
                 }
             </div>
             <div className='bg-blue-200 min-h-3/4 p-3 rounded-b-3xl'>
-                <div className='pb-2 text-xl'><span className='font-bold'>Address:</span> {places.vicinity}</div>
-                <div className='pb-2 text-xl'><span className='font-bold'>Longitude:</span> {places?.geometry?.location?.lng()}, <span className='font-bold'>Latitude:</span> {places?.geometry?.location?.lat()}</div>
+                <div className='pb-2 2xl:text-xl text-base'><span className='font-bold'>Address:</span> {places.vicinity}</div>
+                <div className='pb-2 2xl:text-xl text-base'><span className='font-bold'>Longitude:</span> {places?.geometry?.location?.lng()}, <span className='font-bold'>Latitude:</span> {places?.geometry?.location?.lat()}</div>
             </div>
         </div>
     )

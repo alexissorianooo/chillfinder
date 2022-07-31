@@ -27,7 +27,7 @@
     }
     /* hover:shadow-md */
     .button-effects{
-        @apply hover:scale-110 
+        @apply hover:scale-110
     }
     /* scrollbar for search-results */
     .scrollBar{
@@ -40,6 +40,20 @@
     .scrollBar::-webkit-scrollbar-thumb{
         @apply rounded-lg bg-gray-500
     }
+    /* Start of results component design */
+    .results-title-design-desktop{
+        @apply bg-blue-400 flex flex-row justify-between items-center pl-3 pr-5 py-2 rounded-t-3xl
+    }
+    .results-title-design-laptop{
+        @apply bg-blue-400 flex flex-col justify-start pl-3 pr-5 py-2 rounded-t-3xl
+    }
+    .results-title-desktop{
+        @apply text-2xl text-white font-bold 
+    }
+    .results-title-laptop{
+        @apply text-xl text-white font-bold 
+    }
+    /* End of results component design */
 }
 
 /* for search Suggestions of AutoComplete */
