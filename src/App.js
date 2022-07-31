@@ -44,14 +44,16 @@ function App() {
           <div className='w-3/12 h-full bg-slate-200 drop-shadow-2xl z-[2]'>
             <Search longitude = {longitude} latitude = {latitude}/> 
           </div>
-          <div className='results-mobile sm:hidden'>
-            <div className='sm:hidden'>Found {places.length} {results.type}</div>
-            <div className='search-result-mobile'>
-              <Suspense fallback={<div className='text-3xl'>Loading...</div>}>
-                  {places ? places.map((item,index) => <Results key={index} places={item}/>) : null}
-              </Suspense>
-            </div>
-          </div>
+          { places.length > 0 ? 
+            <div className='results-mobile sm:hidden'>
+              <div className='sm:hidden'>Found {places.length} {results.type}</div>
+              <div className='search-result-mobile'>
+                <Suspense fallback={<div className='text-3xl'>Loading...</div>}>
+                    {places ? places.map((item,index) => <Results key={index} places={item}/>) : null}
+                </Suspense>
+              </div>
+            </div> : null
+          }
           <div className='w-9/12 z-[1] relative'>
             <Maps longitude = {longitude} latitude = {latitude} zoom={zoom}/>
           </div>
