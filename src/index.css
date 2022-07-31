@@ -82,3 +82,7 @@
     font-size: 1rem;
     line-height: 1.5rem;
 }
+
+.pac-container{
+    width: 100vw !important;
+}
