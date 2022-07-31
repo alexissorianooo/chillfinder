@@ -4,7 +4,7 @@
 
 @layer base{
     .search{
-        @apply rounded-md h-12 w-full pl-5 text-2xl 2xl:h-10
+        @apply rounded-md w-full pl-5 text-2xl 2xl:h-10
     }
     .searchBarDiv{
         @apply 2xl:h-1/2 flex flex-col justify-evenly items-center
@@ -31,7 +31,7 @@
     }
     /* scrollbar for search-results */
     .scrollBar{
-        @apply overflow-y-auto
+        @apply overflow-y-auto 
     }
     /* makes the scrollbar beautiful */
     .scrollBar::-webkit-scrollbar{
@@ -47,13 +47,29 @@
     .results-title-design-laptop{
         @apply bg-blue-400 flex flex-col justify-start pl-3 pr-5 py-2 rounded-t-3xl
     }
+    .results-title-design-mobile{
+        @apply bg-blue-400 flex flex-col justify-start pl-3 pr-5 py-2 rounded-t-3xl
+    }
     .results-title-desktop{
         @apply text-lg text-white font-bold 
     }
     .results-title-laptop{
         @apply text-base text-white font-bold 
     }
+    .results-mobile{
+        @apply fixed bg-slate-200 h-2/6 bottom-0 z-[3] overflow-x-auto flex flex-col w-screen
+    }
     /* End of results component design */
+    /* Start of Search component design */
+    .search-result-desktop{
+        @apply block scrollBar h-4/6 2xl:h-[55%] w-full mt-3
+    }
+    .search-result-mobile{
+    }
+    .search-result-count-desktop{
+        @apply w-10/12 h-[10%] m-auto pt-3 flex flex-col justify-center 2xl:justify-end
+    }
+    /* End of Search component design */
 }
 
 /* for search Suggestions of AutoComplete */

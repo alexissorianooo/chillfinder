@@ -71,14 +71,14 @@ function Maps(props) {
           directionResponse && search_endpoint ? 
             <>
               
-              <div className='bg-slate-300 text-[10px] 2xl:text-[15px] p-3 absolute top-6 left-3 z-[2]'>
+              <div className='bg-slate-300 text-[12px] 2xl:text-[15px] p-2 md:p-3 absolute top-6 left-3 z-[2]'>
                 <div><span className='font-bold'>{search_name}</span> to <span className='font-bold'>{search_endpoint_name}</span></div>
                 <div className=' flex flex-row justify-evenly items-center'>
-                  <div className="bg-slate-300 h-12 w-12 rounded-full flex justify-center items-center hover:scale-105 hover:shadow-lg" onClick={() => {maps.panTo(center)}}>
+                  <div className="bg-slate-300 h-6 w-6 md:h-12 md:w-12 rounded-full flex justify-center items-center hover:scale-105 hover:shadow-lg" onClick={() => {maps.panTo(center)}}>
                     {CenterButton()}
                   </div>
-                  <div className='p-3'><span className='font-bold'>Distance:</span> {distance}</div>
-                  <div className='p-3'><span className='font-bold'>Travel Duration:</span> {duration}</div>
+                  <div className='p-2 md:p-3'><span className='font-bold'>Distance:</span> {distance}</div>
+                  <div className='p-2 md:p-3'><span className='font-bold'>Travel Duration:</span> {duration}</div>
                 </div>
               </div>
             </> 

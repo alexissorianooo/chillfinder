@@ -134,11 +134,11 @@ export const Search = () => {
                         </select>
                     </div>
                 </div>
-                <div className='w-10/12 h-[10%] m-auto pt-3 flex flex-col justify-center 2xl:justify-end'>{places.length} {results.type} found</div>
-                <div className='scrollBar h-4/6 2xl:h-[55%] w-full mt-3'>
-                <Suspense fallback={<div className='text-3xl'>Loading...</div>}>
-                    {places ? places.map((item,index) => <Results key={index} places={item}/>) : null}
-                </Suspense>
+                <div className='hidden sm:search-result-count-desktop'>Found {places.length} items</div>
+                <div className='hidden sm:search-result-desktop'>
+                    <Suspense fallback={<div className='text-3xl'>Loading...</div>}>
+                        {places ? places.map((item,index) => <Results key={index} places={item}/>) : null}
+                    </Suspense>
                 {/* {
                     results.loading ? <h1>Loading...</h1> :
                     places ? places.map((item,index) => <Results key={index} places={item}/>) : null

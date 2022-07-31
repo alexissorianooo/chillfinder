@@ -24,7 +24,7 @@ function Results({places}){
                 dispatch(search_endpoint_name(places.name))
             }}
         >
-            <div className='results-title-design-laptop 2xl:results-title-design-desktop'>
+            <div className='results-title-design-mobile sm:results-title-design-laptop 2xl:results-title-design-desktop'>
                 <div className={places.rating ? `results-title-laptop 2xl:results-title-desktop 2xl:w-3/5` : `results-title-laptop 2xl:results-title-desktop`}>{places.name}</div>
                 {
                     places.rating ? 
@@ -36,7 +36,7 @@ function Results({places}){
                         : null
                 }
             </div>
-            <div className='bg-blue-200 min-h-3/4 p-3 rounded-b-3xl'>
+            <div className='bg-blue-200 p-3 rounded-b-3xl'>
                 <div className='pb-2 2xl:text-lg text-sm'><span className='font-bold'>Address:</span> {places.vicinity}</div>
                 <div className='pb-2 2xl:text-lg text-sm'><span className='font-bold'>Longitude:</span> {places?.geometry?.location?.lng()}, <span className='font-bold'>Latitude:</span> {places?.geometry?.location?.lat()}</div>
             </div>
